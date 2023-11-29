@@ -15,6 +15,5 @@ public class Assigment1Part1 extends KarelTheRobot {
         move();
         move();
         move();
-
     }
 }
