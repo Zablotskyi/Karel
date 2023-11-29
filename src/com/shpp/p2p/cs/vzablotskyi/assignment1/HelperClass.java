@@ -16,8 +16,8 @@ public class HelperClass extends KarelTheRobot {
         turnLeft();
     }
 
-    // The method allows you to go and pick up a newspaper that is lying
-    // on the doorstep outside the door
+    // The method allows you to go and pick up a newspaper that
+    // is lying on the doorstep outside the door
     public void pickTheNewspaper() throws Exception {
         turnRight();
         move();
