@@ -5,4 +5,5 @@ public class Assigment2Part1 extends HelperClass {
     public void run() throws Exception {
         fillVerticalRows();
     }
+
 }

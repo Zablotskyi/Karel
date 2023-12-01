@@ -5,35 +5,42 @@ import com.shpp.karel.KarelTheRobot;
 public class HelperClass extends KarelTheRobot {
     //*****************GENERAL METHODS*****************
     // the method turns Karel 90 degrees clockwise
-    public void turnRight() throws Exception {
+    protected void turnRight() throws Exception {
         turnLeft();
         turnLeft();
         turnLeft();
     }
 
     // the method turns Karel 180 degrees clockwise
-    public void turnAround() throws Exception {
+    protected void turnAround() throws Exception {
         turnLeft();
         turnLeft();
     }
 
     // the method checks whether the hero can move forward
     // and takes one step forward
-    public void isCanMoveStraightAhead() throws Exception {
+    protected void checkIfCanStepForwardAndTakeOneStep() throws Exception {
         if (frontIsClear())
             move();
     }
 
-    public void fillCell() throws Exception {
+    protected void fillCell() throws Exception {
         if (noBeepersPresent())
             putBeeper();
-        isCanMoveStraightAhead();
+        checkIfCanStepForwardAndTakeOneStep();
+    }
+
+    //the method moves the hero to the opposite wall
+    protected void moveToTheOppositeWall() throws Exception {
+        while (frontIsClear()) {
+            checkIfCanStepForwardAndTakeOneStep();
+        }
     }
 
     //*****************ASSIGMENT1 METHODS*****************
     // The method allows you to go and pick up a newspaper that
     // is lying on the doorstep outside the door
-    public void pickTheNewspaper() throws Exception {
+    protected void pickTheNewspaper() throws Exception {
         turnRight();
         move();
         turnLeft();
@@ -45,7 +52,7 @@ public class HelperClass extends KarelTheRobot {
     }
 
     // The method returns the hero home
-    public void goHome() throws Exception {
+    protected void goHome() throws Exception {
         turnAround();
         move();
         move();
@@ -59,7 +66,7 @@ public class HelperClass extends KarelTheRobot {
 
     //*****************ASSIGMENT1 METHODS*****************
     // method fills horizontal odd rows with stones
-    public void fillHorizontalRows() throws Exception {
+    protected void fillHorizontalRows() throws Exception {
         while (frontIsClear()) {
             while (frontIsClear()) {
                 fillCell();
@@ -70,14 +77,14 @@ public class HelperClass extends KarelTheRobot {
             }
             turnRight();
             if (frontIsClear()) {
-                isCanMoveStraightAhead();
+                checkIfCanStepForwardAndTakeOneStep();
                 turnRight();
             }
         }
     }
 
     // method fills vertical rows with stones
-    public void fillVerticalRows() throws Exception {
+    protected void fillVerticalRows() throws Exception {
         while (frontIsClear()) {
             turnLeft();
             while (frontIsClear()) {
@@ -88,7 +95,7 @@ public class HelperClass extends KarelTheRobot {
                 fillCell();
             }
             turnLeft();
-            isCanMoveStraightAhead();
+            checkIfCanStepForwardAndTakeOneStep();
         }
         turnLeft();
         while (frontIsClear()) {
@@ -100,28 +107,25 @@ public class HelperClass extends KarelTheRobot {
         }
     }
 
-//    // the method fills the three highest points of
-//    // the north side of the location with pebbles
-//    public void fillTopColumns() throws Exception {
-//        isCanMoveStraightAhead();
-//        turnRight();
-//        move();
-//        putBeeper();
-//        turnLeft();
-//        move();
-//        putBeeper();
-//        move();
-//        putBeeper();
-//        turnAround();
-//        move();
-//        turnLeft();
-//        move();
-//        putBeeper();
-//        turnAround();
-//        move();
-//        move();
-//        turnRight();
-//        move();
-//        move();
-//    }
+    //*****************ASSIGMENT3 METHODS*****************
+    // method places the beeper in front of the opposite wall and turns 180 degrees.
+    // If we have a beeper on the way to the wall, we place the beeper in front of it
+    protected void putBeeperAgainstTheOppositeWall() throws Exception {
+        for (int i = 0; i < 2; i++) {
+            moveToTheOppositeWall();
+            turnAround();
+            fillCell();
+            move();
+            if (beepersPresent()) {
+                turnAround();
+                move();
+                if (noBeepersPresent()) {
+                    turnAround();
+                    fillCell();
+                    move();
+                }
+            }
+        }
+        fillCell();
+    }
 }
