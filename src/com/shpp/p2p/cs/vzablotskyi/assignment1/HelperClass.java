@@ -111,7 +111,7 @@ public class HelperClass extends KarelTheRobot {
     // method places the beeper in front of the opposite wall and turns 180 degrees.
     // If we have a beeper on the way to the wall, we place the beeper in front of it
     protected void putBeeperAgainstTheOppositeWall() throws Exception {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
             moveToTheOppositeWall();
             turnAround();
             fillCell();
