@@ -64,7 +64,7 @@ public class HelperClass extends KarelTheRobot {
         putBeeper();
     }
 
-    //*****************ASSIGMENT1 METHODS*****************
+    //*****************ASSIGMENT2 METHODS*****************
     // method fills horizontal odd rows with stones
     protected void fillHorizontalRows() throws Exception {
         while (frontIsClear()) {
@@ -128,7 +128,7 @@ public class HelperClass extends KarelTheRobot {
         }
         fillCell();
     }
-    //*****************ASSIGMENT3 METHODS*****************
+    //*****************ASSIGMENT2 METHODS*****************
     // the hero appears in the lower right corner. Then he begins to walk around the given area
     // and staggeredly fill it with beamers.
     protected void fillInTheChessboard() throws Exception {
