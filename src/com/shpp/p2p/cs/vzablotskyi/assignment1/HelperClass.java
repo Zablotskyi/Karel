@@ -128,4 +128,27 @@ public class HelperClass extends KarelTheRobot {
         }
         fillCell();
     }
+    //*****************ASSIGMENT3 METHODS*****************
+    // the hero appears in the lower right corner. Then he begins to walk around the given area
+    // and staggeredly fill it with beamers.
+    protected void fillInTheChessboard() throws Exception {
+        while (noBeepersPresent() && frontIsClear()) {
+            while (frontIsClear()) {
+                fillCell();
+                checkIfCanStepForwardAndTakeOneStep();
+            }
+            turnLeft();
+            checkIfCanStepForwardAndTakeOneStep();
+            turnLeft();
+            while (frontIsClear()) {
+                fillCell();
+                checkIfCanStepForwardAndTakeOneStep();
+            }
+            if (rightIsClear())
+                turnRight();
+            checkIfCanStepForwardAndTakeOneStep();
+            if (noBeepersPresent())
+                turnRight();
+        }
+    }
 }
