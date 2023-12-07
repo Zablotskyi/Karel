@@ -111,6 +111,28 @@ public class HelperClass extends KarelTheRobot {
         }
     }
 
+    //method allows the hero to fill all columns with beepers
+    protected void fillTheColumnsWithBeepers() throws Exception {
+        while (leftIsClear()) {
+            if (leftIsClear())
+                turnLeft();
+            while (frontIsClear()) {
+                fillCell();
+            }
+            turnAround();
+            fillCell();
+            while (frontIsClear()) {
+                move();
+            }
+            if (leftIsClear()) {
+                turnLeft();
+                for (int i = 0; i < 4; i++) {
+                    move();
+                }
+            }
+        }
+    }
+
     //*****************ASSIGMENT3 METHODS*****************
     // method places the beeper in front of the opposite wall and turns 180 degrees.
     // If we have a beeper on the way to the wall, we place the beeper in front of it
@@ -132,6 +154,7 @@ public class HelperClass extends KarelTheRobot {
         }
         fillCell();
     }
+
     //*****************ASSIGMENT2 METHODS*****************
     // the hero appears in the lower right corner. Then he begins to walk around the given area
     // and staggeredly fill it with beamers.
