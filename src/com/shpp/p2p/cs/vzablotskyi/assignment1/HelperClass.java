@@ -38,9 +38,14 @@ public class HelperClass extends KarelTheRobot {
     }
 
     //*****************ASSIGMENT1 METHODS*****************
-    // The method allows you to go and pick up a newspaper that
-    // is lying on the doorstep outside the door
+    // The method allows you to go to the newspaper that
+    // is lying on the threshold outside the door
     protected void pickTheNewspaper() throws Exception {
+        pickBeeper();
+    }
+
+    // the method allows the hero to take the newspaper
+    protected void goToTheNewspaper() throws Exception {
         turnRight();
         move();
         turnLeft();
@@ -48,7 +53,6 @@ public class HelperClass extends KarelTheRobot {
         move();
         move();
         move();
-        pickBeeper();
     }
 
     // The method returns the hero home
