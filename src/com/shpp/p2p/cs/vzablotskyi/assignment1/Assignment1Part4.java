@@ -1,9 +1,9 @@
 package com.shpp.p2p.cs.vzablotskyi.assignment1;
 
-public class Assignment2Part1 extends HelperClass {
+public class Assignment1Part4 extends HelperClass {
     @Override
     public void run() throws Exception {
-        fillTheColumnsWithBeepers();
+        fillInTheChessboard();
     }
-
 }
+
